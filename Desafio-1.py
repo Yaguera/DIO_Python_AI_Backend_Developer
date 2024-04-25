@@ -48,13 +48,11 @@ while True:
         print("LIMITE DE SAQUE DIÁRIO ATINGIDO.")
   
   if opcao == "e":
-    print(f'''
-    ###### EXTRATO ######
-    Saldo atual: {saldo}
-    #####Atividades######
-    Você realizou {saques} saques e {depositos} depositos:
-    {extrato}
-    ''')
+    print(f'============= EXTRATO =============')
+    print(f"Saldo atual: {saldo}")
+    print("============Atividades=============")
+    print(f"Você realizou {depositos} deposito(s) e {saques} saque(s).")
+    print("Não foram realizadas movimentações." if not extrato else extrato)
 
   if opcao == "q":
     break
