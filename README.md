@@ -1,4 +1,4 @@
-<h1 align="center">Purplay - Gaming Store (Projeto nº 3)</h1>
+<h1 align="center">DIO_Python_AI_Backend_Developer</h1>
 
 <div align="center">
 
