@@ -26,14 +26,16 @@ def depositar(saldo,valor_deposito,depositos,extrato, /):
     else:
         print("Operação falhou! O valor informado é inválido.")
 
-    return saldo, extrato
+    return saldo, extrato, depositos
 
 def sacar(*, saldo, valor_saque, limite_saque, saques_por_dia, saques, extrato):
     excedeu_saldo = valor_saque > saldo
     excedeu_limite = valor_saque > limite_saque
     excedeu_saques = saques >= saques_por_dia
+    data_e_hora_atuais = datetime.now()
+    data_atual = data_e_hora_atuais.strftime('%d/%m/%Y %H:%M')
 
-    if excedeu saldo:
+    if excedeu_saldo:
       print("Você não possui saldo suficiente")
     elif excedeu_limite:
       print("Valor limite de saque atingido.")
@@ -46,7 +48,7 @@ def sacar(*, saldo, valor_saque, limite_saque, saques_por_dia, saques, extrato):
       print(f"Saque no valor de R${valor_saque:.2f} realizado com sucesso. {saques}") 
     else:
       print("Operação falhou! O valor informado é inválido.")
-    return saldo, extrato
+    return saldo, extrato, saques
 
 def main():
   SAQUES_POR_DIA = 3
@@ -65,17 +67,17 @@ def main():
     
     if opcao == "d":
       valor_deposito = float(input("Informe o valor do deposito: "))
-      saldo,extrato = depositar(saldo, valor_deposito, depositos, extrato)
+      saldo,extrato,depositos = depositar(saldo, valor_deposito, depositos, extrato)
   
     if opcao == "s":
       valor_saque = float(input("Informe o valor que deseja sacar: "))
-      saldo, extrato = sacar(
+      saldo, extrato, saques = sacar(
         saldo=saldo,
         valor_saque=valor_saque,
         limite_saque=limite_saque,
-        saques_por_dia = SAQUES_POR_DIA,
-        saques = saques,
-        extrato = extrato
+        saques_por_dia=SAQUES_POR_DIA,
+        saques=saques,
+        extrato=extrato
       )
         
     
